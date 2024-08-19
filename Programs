@@ -1,0 +1,242 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Shape {
+protected:
+    string color;
+
+public:
+
+    Shape(const string& c = "  ") : color(c) {}
+
+
+    void setColor(const  string& c) {
+        color = c;
+    }
+
+
+    string getColor() const {
+        return color;
+    }
+};
+
+class Rectangle : public Shape {
+private:
+    double length;
+    double breadth;
+
+public:
+
+    Rectangle(double l = 0.0, double b = 0.0, const string& c = " ")
+        : Shape(c), length(l), breadth(b) {}
+
+
+    void setDimensions(double l, double b) {
+        length = l;
+        breadth = b;
+    }
+
+  
+    double getArea() const {
+        return length * breadth;
+    }
+
+  
+    double getPerimeter() const {
+        return 2 * (length + breadth);
+    }
+};
+
+int main() {
+   
+    Rectangle rect(5.0, 3.0, "blue");
+
+ 
+   cout << "Color: " << rect.getColor() << std::endl;
+    cout << "Area: " << rect.getArea() << std::endl;
+    cout << "Perimeter: " << rect.getPerimeter() << std::endl;
+
+
+    return 0;
+}
+
+
+
+Question 2: 
+
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Animal {
+protected:
+    string name;
+
+public:
+   
+    Animal(const string& n = " ") : name(n) {}
+
+    void setName(conststring& n) {
+        name = n;
+    }
+
+ 
+   string getName() const {
+        return name;
+    }
+};
+
+class Mammal : public Animal {
+protected:
+    int numberOfLegs;
+
+public:
+   
+    Mammal(const string& n = " ", int legs = 0)
+        : Animal(n), numberOfLegs(legs) {}
+
+    
+    void setNumberOfLegs(int legs) {
+        numberOfLegs = legs;
+    }
+
+ 
+    int getNumberOfLegs() const {
+        return numberOfLegs;
+    }
+};
+
+class Dog : public Mammal {
+public:
+
+    Dog(const string& n = "  ", int legs = 4)
+        : Mammal(n, legs) {}
+
+   
+    void bark() const {
+      cout << getName() << " is barking!" << std::endl;
+    }
+};
+
+int main() {
+  
+    Dog myDog("Buddy", 4);
+
+   
+    cout << "Name: " << myDog.getName() << std::endl;
+    cout << "Number of Legs: " << myDog.getNumberOfLegs() << std::endl;
+
+    
+    myDog.bark();
+
+   
+    return 0;
+}
+
+Question  3: 
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Person {
+protected:
+    string name;
+   string address;
+
+public:
+   
+    Person(const string& n = "", const string& a = "")
+        : name(n), address(a) {}
+
+   
+    void setName(const string& n) {
+        name = n;
+    }
+
+    
+   string getName() const {
+        return name;
+    }
+
+    
+    void setAddress(const string& a) {
+        address = a;
+    }
+
+   
+   string getAddress() const {
+        return address;
+    }
+};
+
+class Employee {
+protected:
+    string employeeID;
+    double salary;
+
+public:
+  
+    Employee(const string& id = "", double sal = 0.0)
+        : employeeID(id), salary(sal) {}
+
+  
+    void setEmployeeID(const string& id) {
+        employeeID = id;
+    }
+
+    
+    string getEmployeeID() const {
+        return employeeID;
+    }
+
+    
+    void setSalary(double sal) {
+        salary = sal;
+    }
+
+
+    double getSalary() const {
+        return salary;
+    }
+};
+
+class Teacher : public Person, public Employee {
+private:
+    string subject;
+
+public:
+   
+    Teacher(const string& n = "", const string& a = "",
+            const string& id = "", double sal = 0.0, const string& sub = "")
+        : Person(n, a), Employee(id, sal), subject(sub) {}
+
+  
+    void setSubject(const string& sub) {
+        subject = sub;
+    }
+
+   
+    string getSubject() const {
+        return subject;
+    }
+};
+
+int main() {
+  
+    Teacher teacher("Alice", "123 Elm St", "T001", 50000.0, "Mathematics");
+
+    
+    cout << "Name: " << teacher.getName() << std::endl;
+    cout << "Address: " << teacher.getAddress() << std::endl;
+   cout << "Employee ID: " << teacher.getEmployeeID() << std::endl;
+    cout << "Salary: " << teacher.getSalary() << std::endl;
+    cout << "Subject: " << teacher.getSubject() << std::endl;
+
+
+
+    return 0;
+}
+
